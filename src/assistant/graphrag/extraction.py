@@ -18,13 +18,40 @@ def extract_chunk(chunk: Chunk, llm: LLMClient) -> ExtractionResult:
     Функция не падает ни на каком ответе модели: одна повторная попытка, затем пустой результат.
     """
     vocab = vocabulary()
-    codes = set(find_codes(chunk.text))
+    code_list = find_codes(chunk.text)
+    codes = set(code_list)
     names = {kind: set(values) for kind, values in vocab.items()}
+    part_example = (
+        ""
+        if "## Коды ошибок" in chunk.text and "## Состав узлов" not in chunk.text
+        else (
+            "В HAS_PART поле object ВСЕГДА содержит номер P-…, НЕ название узла. "
+            "Например, для «компрессор — деталь P-1000» в модели AR-100 нужны две разные связи: "
+            "AR-100 HAS_PART P-1000; P-1000 IS_A компрессор. "
+        )
+    )
     prompt = (
-        "Извлеки только прямо подтверждённые текстом сущности и связи по указанной схеме. "
-        "Направление важно: Model -> Part — HAS_PART; Part -> Component — IS_A; "
-        "ErrorCode -> Component — INDICATES; Part -> Part — REPLACED_BY. "
-        "Пример: для «P-1 заменена на P-2» верни subject=P-1, type=REPLACED_BY, object=P-2.\n\n"
+        "Извлеки подтверждённые текстом сущности и связи. Поле subject — начало связи, object — конец. "
+        "Имя должно быть кодом без слов перед ним или названием из словаря. Part — только номер детали P-…, "
+        "Component — название узла, даже если в тексте его называют деталью. Типы и направление обязательны:\n"
+        "BELONGS_TO: subject Model, object ProductLine — модель входит в линейку.\n"
+        "HAS_PART: subject Model, object Part — модель содержит указанную деталь.\n"
+        "FAILED: subject Model, object Component — у модели отказал узел по отчёту о выезде.\n"
+        "IS_A: subject Part, object Component — номер детали соответствует названию узла.\n"
+        "REPLACED_BY: subject Part (старая, снятая с производства), object Part (новая замена).\n"
+        "SUPPLIED_BY: subject Part, object Supplier — поставщик указан для детали.\n"
+        "INDICATES: subject ErrorCode, object Component — код ошибки указывает на отказ узла.\n"
+        "FIXED_BY: subject ErrorCode, object Procedure — регламент применяется к ошибке.\n"
+        "В таблице состава узлов извлекай HAS_PART, IS_A и SUPPLIED_BY для каждой строки. "
+        f"{part_example}"
+        "Отчёт о выезде подтверждает FAILED; наличие узла не означает отказ.\n"
+        "Пример формата для «AR-100 содержит деталь P-1000»: "
+        '{"entities":[{"type":"Model","name":"AR-100"},{"type":"Part","name":"P-1000"}],'
+        '"relations":[{"subject_type":"Model","subject":"AR-100","type":"HAS_PART",'
+        '"object_type":"Part","object":"P-1000"}]}. '
+        'Для «P-1000 снята с производства, вместо неё ставят P-1000B» начало связи — P-1000, конец — P-1000B.\n'
+        f"Коды из текста: {', '.join(code_list)}\n"
+        f"Словарь: {json.dumps(vocab, ensure_ascii=False)}\n\n"
         f"Текст чанка:\n{chunk.text}"
     )
     empty = ExtractionResult(chunk.chunk_id, chunk.doc_id)
@@ -38,6 +65,7 @@ def extract_chunk(chunk: Chunk, llm: LLMClient) -> ExtractionResult:
                     }
                 ],
                 json_schema=EXTRACTION_SCHEMA,
+                max_tokens=2600,
             )
             data = json.loads(response.content)
             if (
