@@ -1,0 +1,1755 @@
+{
+  "summary": {
+    "mode": "agent",
+    "model": "qwen3:4b-instruct-2507-q4_K_M",
+    "questions": 24,
+    "accuracy": 0.458,
+    "by_type": {
+      "local": {
+        "questions": 5,
+        "accuracy": 0.2
+      },
+      "multihop": {
+        "questions": 7,
+        "accuracy": 0.571
+      },
+      "global": {
+        "questions": 4,
+        "accuracy": 0.0
+      },
+      "tool": {
+        "questions": 5,
+        "accuracy": 0.8
+      },
+      "refusal": {
+        "questions": 3,
+        "accuracy": 0.667
+      }
+    },
+    "fabricated_rate": 0.0,
+    "source_recall": 0.775,
+    "rejected_calls_rate": 0.1,
+    "llm_calls_per_question": 5.625,
+    "tokens_per_question": 3828.75
+  },
+  "rows": [
+    {
+      "id": "dev-01",
+      "type": "local",
+      "question": "По какому регламенту устраняют ошибку E-17?",
+      "answer": "Регламент по устранению ошибки E-17 в базе знаний не найден. Пожалуйста, уточните вопрос или предоставьте дополнительные сведения.",
+      "correct": false,
+      "refused": true,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": 0.0,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "регламент устранения ошибки E-17"
+          },
+          "result": {
+            "answer": "В базе знаний не найдено.",
+            "sources": [],
+            "refused": true
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 11,
+      "tokens": 5107
+    },
+    {
+      "id": "dev-02",
+      "type": "local",
+      "question": "На отказ какого узла указывает ошибка E-22?",
+      "answer": "Ошибка E-22 указывает на отказ узла GS-410, который связан с циркуляционным насосом. Для ремонта или замены требуется деталь P-3062, которая может быть заменена на P-3062B или P-3062C.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-06.md",
+        "bulletin_SB-2025-09.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-112.md",
+        "report_R-2025-007.md",
+        "report_R-2025-015.md",
+        "report_R-2025-018.md",
+        "report_R-2025-019.md",
+        "report_R-2025-025.md",
+        "report_R-2025-035.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "На отказ какого узла указывает ошибка E-22?"
+          },
+          "result": {
+            "answer": "На отказ узла GS-410 указывает ошибка E-22.",
+            "facts": [
+              "E-22 -INDICATES-> циркуляционный насос",
+              "E-22 -FIXED_BY-> SP-112",
+              "GS-410 -FAILED-> циркуляционный насос",
+              "GS-410 -HAS_PART-> P-3062",
+              "GS-420 -FAILED-> циркуляционный насос",
+              "GS-420 -HAS_PART-> P-3062",
+              "GS-520 -FAILED-> циркуляционный насос",
+              "GS-520 -HAS_PART-> P-3162",
+              "P-3062 -IS_A-> циркуляционный насос",
+              "P-3062 -REPLACED_BY-> P-3062B",
+              "P-3062B -REPLACED_BY-> P-3062C",
+              "P-3162 -IS_A-> циркуляционный насос"
+            ],
+            "sources": [
+              "bulletin_SB-2025-06.md",
+              "bulletin_SB-2025-09.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-112.md",
+              "report_R-2025-007.md",
+              "report_R-2025-015.md",
+              "report_R-2025-018.md",
+              "report_R-2025-019.md",
+              "report_R-2025-025.md",
+              "report_R-2025-035.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 2658
+    },
+    {
+      "id": "dev-03",
+      "type": "local",
+      "question": "Кто поставляет деталь P-3062C?",
+      "answer": "Информация о поставщиках детали P-3062C не доступна в текущих данных. Пожалуйста, уточните вопрос или предоставьте дополнительные сведения.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": 0.0,
+      "steps": [],
+      "rejected_steps": 0,
+      "llm_calls": 1,
+      "tokens": 923
+    },
+    {
+      "id": "dev-04",
+      "type": "local",
+      "question": "В какую линейку входит модель BZ-210?",
+      "answer": "Модель BZ-210 входит в линейку вентиляторов испарителя и нагревателей оттайки.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-04.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "procedure_SP-108.md",
+        "procedure_SP-110.md",
+        "report_R-2025-004.md",
+        "report_R-2025-005.md",
+        "report_R-2025-008.md",
+        "report_R-2025-014.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-020.md",
+        "report_R-2025-021.md",
+        "report_R-2025-024.md",
+        "report_R-2025-030.md",
+        "report_R-2025-033.md",
+        "report_R-2025-038.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "В какую линейку входит модель BZ-210?"
+          },
+          "result": {
+            "answer": "Модель BZ-210 входит в линейку вентиляторов испарителя и нагревателей оттайки.",
+            "sources": [
+              "bulletin_SB-2025-04.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "procedure_SP-108.md",
+              "procedure_SP-110.md",
+              "report_R-2025-004.md",
+              "report_R-2025-005.md",
+              "report_R-2025-008.md",
+              "report_R-2025-014.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-020.md",
+              "report_R-2025-021.md",
+              "report_R-2025-024.md",
+              "report_R-2025-030.md",
+              "report_R-2025-033.md",
+              "report_R-2025-038.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 12,
+      "tokens": 5457
+    },
+    {
+      "id": "dev-05",
+      "type": "local",
+      "question": "Чем заменена деталь P-2110?",
+      "answer": "Деталь P-2110 заменяется деталью P-2110B.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-05.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-102.md",
+        "report_R-2025-004.md",
+        "report_R-2025-008.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-021.md",
+        "report_R-2025-024.md",
+        "report_R-2025-033.md",
+        "report_R-2025-038.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "чем заменена деталь P-2110"
+          },
+          "result": {
+            "answer": "Деталь P-2110 заменена деталью P-2110B.",
+            "facts": [
+              "E-11 -INDICATES-> компрессор",
+              "E-12 -INDICATES-> компрессор",
+              "BZ-120 -FAILED-> вентилятор испарителя",
+              "BZ-120 -FAILED-> компрессор",
+              "BZ-120 -FAILED-> нагреватель оттайки",
+              "BZ-120 -HAS_PART-> P-2010",
+              "BZ-210 -FAILED-> вентилятор испарителя",
+              "BZ-210 -FAILED-> нагреватель оттайки",
+              "BZ-210 -HAS_PART-> P-2110",
+              "BZ-210 -HAS_PART-> P-2114",
+              "BZ-210 -HAS_PART-> P-2118",
+              "BZ-210 -HAS_PART-> P-2122",
+              "BZ-210 -HAS_PART-> P-2126",
+              "BZ-210 -HAS_PART-> P-2146",
+              "BZ-210 -HAS_PART-> P-2154",
+              "BZ-210 -HAS_PART-> P-2158",
+              "BZ-220 -FAILED-> вентилятор испарителя",
+              "BZ-220 -FAILED-> нагреватель оттайки",
+              "BZ-220 -HAS_PART-> P-2110",
+              "BZ-220 -HAS_PART-> P-2114",
+              "BZ-220 -HAS_PART-> P-2118",
+              "BZ-220 -HAS_PART-> P-2122",
+              "BZ-220 -HAS_PART-> P-2126",
+              "BZ-220 -HAS_PART-> P-2146",
+              "BZ-220 -HAS_PART-> P-2154",
+              "BZ-220 -HAS_PART-> P-2158",
+              "P-1010 -IS_A-> компрессор",
+              "P-1010 -SUPPLIED_BY-> КомпрессорМаш",
+              "P-1110 -IS_A-> компрессор",
+              "P-1110 -SUPPLIED_BY-> КомпрессорМаш",
+              "P-2010 -IS_A-> компрессор",
+              "P-2010 -SUPPLIED_BY-> КомпрессорМаш",
+              "P-2110 -IS_A-> компрессор",
+              "P-2110 -REPLACED_BY-> P-2110B",
+              "P-2110 -SUPPLIED_BY-> КомпрессорМаш",
+              "P-2110B -SUPPLIED_BY-> КомпрессорМаш",
+              "P-2146 -IS_A-> вентилятор испарителя",
+              "P-2154 -IS_A-> нагреватель оттайки",
+              "P-3010 -IS_A-> компрессор",
+              "P-3010 -SUPPLIED_BY-> КомпрессорМаш",
+              "P-3110 -IS_A-> компрессор",
+              "P-3110 -SUPPLIED_BY-> КомпрессорМаш"
+            ],
+            "sources": [
+              "bulletin_SB-2025-05.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-102.md",
+              "report_R-2025-004.md",
+              "report_R-2025-008.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-021.md",
+              "report_R-2025-024.md",
+              "report_R-2025-033.md",
+              "report_R-2025-038.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 3801
+    },
+    {
+      "id": "dev-06",
+      "type": "multihop",
+      "question": "Какую деталь заказать при ошибке E-17 на AR-210?",
+      "answer": "При ошибке E-17 на AR-210 нужно заказать деталь P-1042B, так как она заменяет пусковое реле, неисправное в AR-210.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-03.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "procedure_SP-104.md",
+        "report_R-2025-010.md",
+        "report_R-2025-028.md",
+        "report_R-2025-034.md",
+        "report_R-2025-037.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Какую деталь заказать при ошибке E-17 на AR-210?"
+          },
+          "result": {
+            "answer": "При ошибке E-17 на AR-210 нужно заказать деталь, которая заменяет пусковое реле, так как E-17 указывает на пусковое реле, а AR-210 неисправен и имеет часть P-1042, которая является пусковым реле. P-1042 заменяется на P-1042B.\n\nПоследняя деталь в цепочке REPLACED_BY — P-1042B.\n\nОтвет: P-1042B.",
+            "facts": [
+              "E-17 -INDICATES-> пусковое реле",
+              "AR-210 -FAILED-> пусковое реле",
+              "AR-210 -HAS_PART-> P-1042",
+              "P-1042 -IS_A-> пусковое реле",
+              "P-1042 -REPLACED_BY-> P-1042B"
+            ],
+            "sources": [
+              "bulletin_SB-2025-03.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "procedure_SP-104.md",
+              "report_R-2025-010.md",
+              "report_R-2025-028.md",
+              "report_R-2025-034.md",
+              "report_R-2025-037.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 2542
+    },
+    {
+      "id": "dev-07",
+      "type": "multihop",
+      "question": "Какую деталь заказать при ошибке E-22 на GS-510?",
+      "answer": "При ошибке E-22 на GS-510 нужно заказать циркуляционный насос, код детали которого — P-3162.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-112.md",
+        "report_R-2025-015.md",
+        "report_R-2025-035.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Какую деталь заказать при ошибке E-22 на GS-510?"
+          },
+          "result": {
+            "answer": "При ошибке E-22 на GS-510 нужно заказать циркуляционный насос, так как E-22 указывает на циркуляционный насос, а GS-510 содержит деталь P-3162, которая является циркуляционным насосом. Следовательно, последняя деталь в цепочке REPLACED_BY — циркуляционный насос.",
+            "facts": [
+              "E-22 -INDICATES-> циркуляционный насос",
+              "GS-510 -HAS_PART-> P-3162",
+              "P-3162 -IS_A-> циркуляционный насос"
+            ],
+            "sources": [
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-112.md",
+              "report_R-2025-015.md",
+              "report_R-2025-035.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 2377
+    },
+    {
+      "id": "dev-08",
+      "type": "multihop",
+      "question": "Кто сейчас поставляет деталь узла «реле давления» для модели GS-520?",
+      "answer": "Деталь узла «реле давления» для модели GS-520 заменяется на деталь с кодом **P-3126B**.  \n\nТак как в технических данных указано, что P-3126B — это замена для P-3126 (реле давления), и модель GS-520 использует эту деталь, поставщик детали P-3126B определяется на основе данных о поставках в графе знаний.  \n\nОднако в текущем запросе не указано, кто именно поставляет деталь P-3126B. Для точного ответа необходимо провести дополнительный поиск по поставщикам или складам.  \n\nПожалуйста, уточните, требуется ли информация о поставщике (складе) или только код детали.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-07.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "report_R-2025-002.md",
+        "report_R-2025-007.md",
+        "report_R-2025-011.md",
+        "report_R-2025-015.md",
+        "report_R-2025-018.md",
+        "report_R-2025-019.md",
+        "report_R-2025-022.md",
+        "report_R-2025-025.md",
+        "report_R-2025-031.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "кто сейчас поставляет деталь узла «реле давления» для модели GS-520"
+          },
+          "result": {
+            "answer": "P-3126B",
+            "facts": [
+              "GS-410 -FAILED-> реле давления",
+              "GS-410 -FAILED-> циркуляционный насос",
+              "GS-410 -BELONGS_TO-> Гольфстрим",
+              "GS-420 -FAILED-> реле давления",
+              "GS-420 -FAILED-> циркуляционный насос",
+              "GS-420 -BELONGS_TO-> Гольфстрим",
+              "GS-510 -FAILED-> реле давления",
+              "GS-510 -HAS_PART-> P-3110",
+              "GS-510 -HAS_PART-> P-3114",
+              "GS-510 -HAS_PART-> P-3118",
+              "GS-510 -HAS_PART-> P-3122",
+              "GS-510 -HAS_PART-> P-3126",
+              "GS-510 -HAS_PART-> P-3158",
+              "GS-510 -HAS_PART-> P-3162",
+              "GS-510 -HAS_PART-> P-3166",
+              "GS-510 -BELONGS_TO-> Гольфстрим",
+              "GS-520 -FAILED-> реле давления",
+              "GS-520 -FAILED-> циркуляционный насос",
+              "GS-520 -HAS_PART-> P-3110",
+              "GS-520 -HAS_PART-> P-3114",
+              "GS-520 -HAS_PART-> P-3118",
+              "GS-520 -HAS_PART-> P-3122",
+              "GS-520 -HAS_PART-> P-3126",
+              "GS-520 -HAS_PART-> P-3158",
+              "GS-520 -HAS_PART-> P-3162",
+              "GS-520 -HAS_PART-> P-3166",
+              "GS-520 -BELONGS_TO-> Гольфстрим",
+              "P-3126 -IS_A-> реле давления",
+              "P-3126 -REPLACED_BY-> P-3126B"
+            ],
+            "sources": [
+              "bulletin_SB-2025-07.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "report_R-2025-002.md",
+              "report_R-2025-007.md",
+              "report_R-2025-011.md",
+              "report_R-2025-015.md",
+              "report_R-2025-018.md",
+              "report_R-2025-019.md",
+              "report_R-2025-022.md",
+              "report_R-2025-025.md",
+              "report_R-2025-031.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 3395
+    },
+    {
+      "id": "dev-09",
+      "type": "multihop",
+      "question": "Какая деталь сейчас ставится в BZ-110 как узел «нагреватель оттайки»?",
+      "answer": "Деталь, которая сейчас ставится в BZ-110 как узел «нагреватель оттайки», — это **P-2054C**.  \n\nЭто следует из последовательности замен:  \n- P-2054 → P-2054B → P-2054C.  \n- В технических документах указано, что P-2054C является текущей версией детали для узла «нагреватель оттайки» в BZ-110.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-04.md",
+        "bulletin_SB-2025-08.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "report_R-2025-004.md",
+        "report_R-2025-005.md",
+        "report_R-2025-008.md",
+        "report_R-2025-014.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-021.md",
+        "report_R-2025-024.md",
+        "report_R-2025-030.md",
+        "report_R-2025-033.md",
+        "report_R-2025-038.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Какая деталь сейчас ставится в BZ-110 как узел «нагреватель оттайки»?"
+          },
+          "result": {
+            "answer": "P-2054C",
+            "facts": [
+              "BZ-110 -FAILED-> вентилятор испарителя",
+              "BZ-110 -FAILED-> нагреватель оттайки",
+              "BZ-110 -HAS_PART-> P-2010",
+              "BZ-110 -HAS_PART-> P-2054",
+              "BZ-120 -FAILED-> вентилятор испарителя",
+              "BZ-120 -FAILED-> нагреватель оттайки",
+              "BZ-120 -HAS_PART-> P-2010",
+              "BZ-210 -FAILED-> вентилятор испарителя",
+              "BZ-210 -FAILED-> нагреватель оттайки",
+              "BZ-220 -FAILED-> вентилятор испарителя",
+              "BZ-220 -FAILED-> нагреватель оттайки",
+              "P-2054 -IS_A-> нагреватель оттайки",
+              "P-2054 -REPLACED_BY-> P-2054B",
+              "P-2054B -REPLACED_BY-> P-2054C"
+            ],
+            "sources": [
+              "bulletin_SB-2025-04.md",
+              "bulletin_SB-2025-08.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "report_R-2025-004.md",
+              "report_R-2025-005.md",
+              "report_R-2025-008.md",
+              "report_R-2025-014.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-021.md",
+              "report_R-2025-024.md",
+              "report_R-2025-030.md",
+              "report_R-2025-033.md",
+              "report_R-2025-038.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 2874
+    },
+    {
+      "id": "dev-10",
+      "type": "multihop",
+      "question": "По какому регламенту устраняют отказ узла «вентилятор испарителя»?",
+      "answer": "В базе знаний не найдено регламентов по устранению отказа узла «вентилятор испарителя». Пожалуйста, уточните модель оборудования или предоставьте дополнительные сведения для поиска соответствующей информации.",
+      "correct": false,
+      "refused": true,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": 0.0,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "регламент устранения отказа узла «вентилятор испарителя»"
+          },
+          "result": {
+            "answer": "В базе знаний не найдено.",
+            "sources": [],
+            "refused": true
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 11,
+      "tokens": 5607
+    },
+    {
+      "id": "dev-11",
+      "type": "multihop",
+      "question": "В каких моделях установлена деталь P-1046, снятая с производства?",
+      "answer": "Деталь P-1046 была установлена в моделях **AR-210** и **AR-220**.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-01.md",
+        "bulletin_SB-2025-03.md",
+        "bulletin_SB-2025-10.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-108.md",
+        "report_R-2025-005.md",
+        "report_R-2025-008.md",
+        "report_R-2025-014.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-020.md",
+        "report_R-2025-021.md",
+        "report_R-2025-027.md",
+        "report_R-2025-028.md",
+        "report_R-2025-036.md",
+        "report_R-2025-037.md",
+        "report_R-2025-038.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "В каких моделях установлена деталь P-1046, снятая с производства?"
+          },
+          "result": {
+            "answer": "Деталь P-1046 была снята с производства и заменена на P-1046B (факт 36). Вопрос касается моделей, в которых была установлена **P-1046**, снятая с производства.\n\nИз фактов:\n\n- AR-210 -HAS_PART-> P-1046 (факт 10)\n- AR-220 -HAS_PART-> P-1046 (факт 19)\n\nСледовательно, деталь P-1046 была установлена в моделях **AR-210** и **AR-220**.\n\nОтвет: **AR-210 и AR-220**.",
+            "facts": [
+              "E-18 -INDICATES-> вентилятор испарителя",
+              "AR-210 -FAILED-> датчик температуры",
+              "AR-210 -FAILED-> пусковое реле",
+              "AR-210 -HAS_PART-> P-1010",
+              "AR-210 -HAS_PART-> P-1014",
+              "AR-210 -HAS_PART-> P-1018",
+              "AR-210 -HAS_PART-> P-1022",
+              "AR-210 -HAS_PART-> P-1026",
+              "AR-210 -HAS_PART-> P-1042",
+              "AR-210 -HAS_PART-> P-1046",
+              "AR-210 -HAS_PART-> P-1050",
+              "AR-220 -FAILED-> пусковое реле",
+              "AR-220 -HAS_PART-> P-1010",
+              "AR-220 -HAS_PART-> P-1014",
+              "AR-220 -HAS_PART-> P-1018",
+              "AR-220 -HAS_PART-> P-1022",
+              "AR-220 -HAS_PART-> P-1026",
+              "AR-220 -HAS_PART-> P-1042",
+              "AR-220 -HAS_PART-> P-1046",
+              "AR-220 -HAS_PART-> P-1050",
+              "BZ-110 -FAILED-> вентилятор испарителя",
+              "BZ-110 -HAS_PART-> P-2014",
+              "BZ-110 -HAS_PART-> P-2046",
+              "BZ-120 -FAILED-> вентилятор испарителя",
+              "BZ-210 -FAILED-> вентилятор испарителя",
+              "BZ-210 -HAS_PART-> P-2114",
+              "BZ-210 -HAS_PART-> P-2146",
+              "BZ-220 -FAILED-> вентилятор испарителя",
+              "BZ-220 -HAS_PART-> P-2114",
+              "BZ-220 -HAS_PART-> P-2146",
+              "P-1014 -SUPPLIED_BY-> ВентПром",
+              "P-1018 -IS_A-> датчик температуры",
+              "P-1042 -IS_A-> пусковое реле",
+              "P-1042 -REPLACED_BY-> P-1042B",
+              "P-1046 -IS_A-> вентилятор испарителя",
+              "P-1046 -REPLACED_BY-> P-1046B",
+              "P-1046 -SUPPLIED_BY-> ВентПром",
+              "P-1046B -SUPPLIED_BY-> ВентПром",
+              "P-1114 -SUPPLIED_BY-> ВентПром",
+              "P-1146 -IS_A-> вентилятор испарителя",
+              "P-1146 -SUPPLIED_BY-> ВентПром",
+              "P-2014 -SUPPLIED_BY-> ВентПром",
+              "P-2046 -IS_A-> вентилятор испарителя",
+              "P-2046 -SUPPLIED_BY-> ВентПром",
+              "P-2114 -SUPPLIED_BY-> ВентПром",
+              "P-2146 -IS_A-> вентилятор испарителя",
+              "P-2146 -SUPPLIED_BY-> ВентПром",
+              "P-3014 -SUPPLIED_BY-> ВентПром",
+              "P-3114 -SUPPLIED_BY-> ВентПром"
+            ],
+            "sources": [
+              "bulletin_SB-2025-01.md",
+              "bulletin_SB-2025-03.md",
+              "bulletin_SB-2025-10.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-108.md",
+              "report_R-2025-005.md",
+              "report_R-2025-008.md",
+              "report_R-2025-014.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-020.md",
+              "report_R-2025-021.md",
+              "report_R-2025-027.md",
+              "report_R-2025-028.md",
+              "report_R-2025-036.md",
+              "report_R-2025-037.md",
+              "report_R-2025-038.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 4527
+    },
+    {
+      "id": "dev-12",
+      "type": "multihop",
+      "question": "Деталь какого поставщика нужна при ошибке E-14 на AR-320?",
+      "answer": "Деталь, необходимая при ошибке E-14 на AR-320, — это P-1118B.  \n\nЭта деталь является заменой для датчика температуры, который выявляется при ошибке E-14.  \n\nПоставщик детали не указан в имеющихся данных. Для получения информации о поставщике требуется дополнительный запрос.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-02.md",
+        "manual_AR-210.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-210.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-105.md",
+        "report_R-2025-009.md",
+        "report_R-2025-026.md",
+        "report_R-2025-032.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Деталь какого поставщика нужна при ошибке E-14 на AR-320?"
+          },
+          "result": {
+            "answer": "Последняя деталь в цепочке REPLACED_BY — P-1118B.  \n\nОтвет: P-1118B.",
+            "facts": [
+              "E-14 -INDICATES-> датчик температуры",
+              "AR-320 -FAILED-> датчик температуры",
+              "AR-320 -HAS_PART-> P-1118",
+              "P-1118 -IS_A-> датчик температуры",
+              "P-1118 -REPLACED_BY-> P-1118B"
+            ],
+            "sources": [
+              "bulletin_SB-2025-02.md",
+              "manual_AR-210.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-210.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-105.md",
+              "report_R-2025-009.md",
+              "report_R-2025-026.md",
+              "report_R-2025-032.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 3,
+      "tokens": 2485
+    },
+    {
+      "id": "dev-13",
+      "type": "global",
+      "question": "Какой узел чаще всего отказывает в линейке «Арктика»?",
+      "answer": "В линейке «Арктика» чаще всего отказывает вентилятор испарителя.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-03.md",
+        "bulletin_SB-2025-04.md",
+        "bulletin_SB-2025-06.md",
+        "bulletin_SB-2025-07.md",
+        "bulletin_SB-2025-09.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-104.md",
+        "procedure_SP-107.md",
+        "procedure_SP-108.md",
+        "procedure_SP-110.md",
+        "procedure_SP-112.md",
+        "procedure_SP-113.md",
+        "report_R-2025-001.md",
+        "report_R-2025-002.md",
+        "report_R-2025-003.md",
+        "report_R-2025-004.md",
+        "report_R-2025-005.md",
+        "report_R-2025-006.md",
+        "report_R-2025-007.md",
+        "report_R-2025-008.md",
+        "report_R-2025-009.md",
+        "report_R-2025-010.md",
+        "report_R-2025-011.md",
+        "report_R-2025-012.md",
+        "report_R-2025-013.md",
+        "report_R-2025-014.md",
+        "report_R-2025-015.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-018.md",
+        "report_R-2025-019.md",
+        "report_R-2025-020.md",
+        "report_R-2025-021.md",
+        "report_R-2025-022.md",
+        "report_R-2025-023.md",
+        "report_R-2025-024.md",
+        "report_R-2025-025.md",
+        "report_R-2025-026.md",
+        "report_R-2025-028.md",
+        "report_R-2025-029.md",
+        "report_R-2025-030.md",
+        "report_R-2025-031.md",
+        "report_R-2025-032.md",
+        "report_R-2025-033.md",
+        "report_R-2025-034.md",
+        "report_R-2025-035.md",
+        "report_R-2025-036.md",
+        "report_R-2025-037.md",
+        "report_R-2025-038.md",
+        "report_R-2025-039.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "Какой узел чаще всего отказывает в линейке «Арктика»?"
+          },
+          "result": {
+            "answer": "В линейке «Арктика» чаще всего отказывает вентилятор испарителя.",
+            "sources": [
+              "bulletin_SB-2025-03.md",
+              "bulletin_SB-2025-04.md",
+              "bulletin_SB-2025-06.md",
+              "bulletin_SB-2025-07.md",
+              "bulletin_SB-2025-09.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-104.md",
+              "procedure_SP-107.md",
+              "procedure_SP-108.md",
+              "procedure_SP-110.md",
+              "procedure_SP-112.md",
+              "procedure_SP-113.md",
+              "report_R-2025-001.md",
+              "report_R-2025-002.md",
+              "report_R-2025-003.md",
+              "report_R-2025-004.md",
+              "report_R-2025-005.md",
+              "report_R-2025-006.md",
+              "report_R-2025-007.md",
+              "report_R-2025-008.md",
+              "report_R-2025-009.md",
+              "report_R-2025-010.md",
+              "report_R-2025-011.md",
+              "report_R-2025-012.md",
+              "report_R-2025-013.md",
+              "report_R-2025-014.md",
+              "report_R-2025-015.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-018.md",
+              "report_R-2025-019.md",
+              "report_R-2025-020.md",
+              "report_R-2025-021.md",
+              "report_R-2025-022.md",
+              "report_R-2025-023.md",
+              "report_R-2025-024.md",
+              "report_R-2025-025.md",
+              "report_R-2025-026.md",
+              "report_R-2025-028.md",
+              "report_R-2025-029.md",
+              "report_R-2025-030.md",
+              "report_R-2025-031.md",
+              "report_R-2025-032.md",
+              "report_R-2025-033.md",
+              "report_R-2025-034.md",
+              "report_R-2025-035.md",
+              "report_R-2025-036.md",
+              "report_R-2025-037.md",
+              "report_R-2025-038.md",
+              "report_R-2025-039.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 12,
+      "tokens": 5845
+    },
+    {
+      "id": "dev-14",
+      "type": "global",
+      "question": "Какой узел чаще всего отказывает в линейке «Гольфстрим»?",
+      "answer": "В линейке «Гольфстрим» чаще всего отказывает вентилятор испарителя.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-03.md",
+        "bulletin_SB-2025-04.md",
+        "bulletin_SB-2025-06.md",
+        "bulletin_SB-2025-07.md",
+        "bulletin_SB-2025-09.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-104.md",
+        "procedure_SP-107.md",
+        "procedure_SP-108.md",
+        "procedure_SP-110.md",
+        "procedure_SP-112.md",
+        "procedure_SP-113.md",
+        "report_R-2025-001.md",
+        "report_R-2025-002.md",
+        "report_R-2025-003.md",
+        "report_R-2025-004.md",
+        "report_R-2025-005.md",
+        "report_R-2025-006.md",
+        "report_R-2025-007.md",
+        "report_R-2025-008.md",
+        "report_R-2025-009.md",
+        "report_R-2025-010.md",
+        "report_R-2025-011.md",
+        "report_R-2025-012.md",
+        "report_R-2025-013.md",
+        "report_R-2025-014.md",
+        "report_R-2025-015.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-018.md",
+        "report_R-2025-019.md",
+        "report_R-2025-020.md",
+        "report_R-2025-021.md",
+        "report_R-2025-022.md",
+        "report_R-2025-023.md",
+        "report_R-2025-024.md",
+        "report_R-2025-025.md",
+        "report_R-2025-026.md",
+        "report_R-2025-028.md",
+        "report_R-2025-029.md",
+        "report_R-2025-030.md",
+        "report_R-2025-031.md",
+        "report_R-2025-032.md",
+        "report_R-2025-033.md",
+        "report_R-2025-034.md",
+        "report_R-2025-035.md",
+        "report_R-2025-036.md",
+        "report_R-2025-037.md",
+        "report_R-2025-038.md",
+        "report_R-2025-039.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "Какой узел чаще всего отказывает в линейке «Гольфстрим»?"
+          },
+          "result": {
+            "answer": "В линейке «Гольфстрим» чаще всего отказывает вентилятор испарителя.",
+            "sources": [
+              "bulletin_SB-2025-03.md",
+              "bulletin_SB-2025-04.md",
+              "bulletin_SB-2025-06.md",
+              "bulletin_SB-2025-07.md",
+              "bulletin_SB-2025-09.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-104.md",
+              "procedure_SP-107.md",
+              "procedure_SP-108.md",
+              "procedure_SP-110.md",
+              "procedure_SP-112.md",
+              "procedure_SP-113.md",
+              "report_R-2025-001.md",
+              "report_R-2025-002.md",
+              "report_R-2025-003.md",
+              "report_R-2025-004.md",
+              "report_R-2025-005.md",
+              "report_R-2025-006.md",
+              "report_R-2025-007.md",
+              "report_R-2025-008.md",
+              "report_R-2025-009.md",
+              "report_R-2025-010.md",
+              "report_R-2025-011.md",
+              "report_R-2025-012.md",
+              "report_R-2025-013.md",
+              "report_R-2025-014.md",
+              "report_R-2025-015.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-018.md",
+              "report_R-2025-019.md",
+              "report_R-2025-020.md",
+              "report_R-2025-021.md",
+              "report_R-2025-022.md",
+              "report_R-2025-023.md",
+              "report_R-2025-024.md",
+              "report_R-2025-025.md",
+              "report_R-2025-026.md",
+              "report_R-2025-028.md",
+              "report_R-2025-029.md",
+              "report_R-2025-030.md",
+              "report_R-2025-031.md",
+              "report_R-2025-032.md",
+              "report_R-2025-033.md",
+              "report_R-2025-034.md",
+              "report_R-2025-035.md",
+              "report_R-2025-036.md",
+              "report_R-2025-037.md",
+              "report_R-2025-038.md",
+              "report_R-2025-039.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 12,
+      "tokens": 5862
+    },
+    {
+      "id": "dev-15",
+      "type": "global",
+      "question": "У какой модели линейки «Бриз» больше всего отказов?",
+      "answer": "Модель линейки «Бриз» с наибольшим количеством отказов — это модель с неисправностью вентилятора испарителя.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-03.md",
+        "bulletin_SB-2025-04.md",
+        "bulletin_SB-2025-06.md",
+        "bulletin_SB-2025-07.md",
+        "bulletin_SB-2025-09.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-104.md",
+        "procedure_SP-107.md",
+        "procedure_SP-108.md",
+        "procedure_SP-110.md",
+        "procedure_SP-112.md",
+        "procedure_SP-113.md",
+        "report_R-2025-001.md",
+        "report_R-2025-002.md",
+        "report_R-2025-003.md",
+        "report_R-2025-004.md",
+        "report_R-2025-005.md",
+        "report_R-2025-006.md",
+        "report_R-2025-007.md",
+        "report_R-2025-008.md",
+        "report_R-2025-009.md",
+        "report_R-2025-010.md",
+        "report_R-2025-011.md",
+        "report_R-2025-012.md",
+        "report_R-2025-013.md",
+        "report_R-2025-014.md",
+        "report_R-2025-015.md",
+        "report_R-2025-016.md",
+        "report_R-2025-017.md",
+        "report_R-2025-018.md",
+        "report_R-2025-019.md",
+        "report_R-2025-020.md",
+        "report_R-2025-021.md",
+        "report_R-2025-022.md",
+        "report_R-2025-023.md",
+        "report_R-2025-024.md",
+        "report_R-2025-025.md",
+        "report_R-2025-026.md",
+        "report_R-2025-028.md",
+        "report_R-2025-029.md",
+        "report_R-2025-030.md",
+        "report_R-2025-031.md",
+        "report_R-2025-032.md",
+        "report_R-2025-033.md",
+        "report_R-2025-034.md",
+        "report_R-2025-035.md",
+        "report_R-2025-036.md",
+        "report_R-2025-037.md",
+        "report_R-2025-038.md",
+        "report_R-2025-039.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "У какой модели линейки «Бриз» больше всего отказов?"
+          },
+          "result": {
+            "answer": "Модель линейки «Бриз» с наибольшим количеством отказов — это модель с неисправностью вентилятора испарителя.",
+            "sources": [
+              "bulletin_SB-2025-03.md",
+              "bulletin_SB-2025-04.md",
+              "bulletin_SB-2025-06.md",
+              "bulletin_SB-2025-07.md",
+              "bulletin_SB-2025-09.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-104.md",
+              "procedure_SP-107.md",
+              "procedure_SP-108.md",
+              "procedure_SP-110.md",
+              "procedure_SP-112.md",
+              "procedure_SP-113.md",
+              "report_R-2025-001.md",
+              "report_R-2025-002.md",
+              "report_R-2025-003.md",
+              "report_R-2025-004.md",
+              "report_R-2025-005.md",
+              "report_R-2025-006.md",
+              "report_R-2025-007.md",
+              "report_R-2025-008.md",
+              "report_R-2025-009.md",
+              "report_R-2025-010.md",
+              "report_R-2025-011.md",
+              "report_R-2025-012.md",
+              "report_R-2025-013.md",
+              "report_R-2025-014.md",
+              "report_R-2025-015.md",
+              "report_R-2025-016.md",
+              "report_R-2025-017.md",
+              "report_R-2025-018.md",
+              "report_R-2025-019.md",
+              "report_R-2025-020.md",
+              "report_R-2025-021.md",
+              "report_R-2025-022.md",
+              "report_R-2025-023.md",
+              "report_R-2025-024.md",
+              "report_R-2025-025.md",
+              "report_R-2025-026.md",
+              "report_R-2025-028.md",
+              "report_R-2025-029.md",
+              "report_R-2025-030.md",
+              "report_R-2025-031.md",
+              "report_R-2025-032.md",
+              "report_R-2025-033.md",
+              "report_R-2025-034.md",
+              "report_R-2025-035.md",
+              "report_R-2025-036.md",
+              "report_R-2025-037.md",
+              "report_R-2025-038.md",
+              "report_R-2025-039.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 12,
+      "tokens": 5833
+    },
+    {
+      "id": "dev-16",
+      "type": "global",
+      "question": "Какие детали из руководств линейки «Бриз» сняты с производства?",
+      "answer": "Детали из линейки «Бриз» не сняты с производства. Всё руководство по эксплуатации и технические документы подтверждают наличие и актуальность всех моделей линейки.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-05.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "manual_AR-310.md",
+        "manual_AR-320.md",
+        "manual_BZ-110.md",
+        "manual_BZ-120.md",
+        "manual_BZ-210.md",
+        "manual_BZ-220.md",
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-101.md",
+        "procedure_SP-102.md",
+        "report_R-2025-040.md"
+      ],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "summarize_topic",
+          "args": {
+            "question": "детали линейки «Бриз» сняты с производства"
+          },
+          "result": {
+            "answer": "Нет",
+            "sources": [
+              "bulletin_SB-2025-05.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "manual_AR-310.md",
+              "manual_AR-320.md",
+              "manual_BZ-110.md",
+              "manual_BZ-120.md",
+              "manual_BZ-210.md",
+              "manual_BZ-220.md",
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-101.md",
+              "procedure_SP-102.md",
+              "report_R-2025-040.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 12,
+      "tokens": 5148
+    },
+    {
+      "id": "dev-17",
+      "type": "tool",
+      "question": "Ошибка E-17 на AR-210. Какую деталь заказать, есть ли она на складе в Казани и сколько она стоит?",
+      "answer": "Для устранения ошибки E-17 на оборудовании AR-210 необходимо заказать деталь P-1042B (пусковое реле).\n\n- Остаток на складе в Казани: 3 шт. (доступно).\n- Цена детали: 2630 рублей.\n\nДеталь в наличии и доступна для заказа.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "bulletin_SB-2025-03.md",
+        "manual_AR-210.md",
+        "manual_AR-220.md",
+        "procedure_SP-104.md",
+        "report_R-2025-010.md",
+        "report_R-2025-028.md",
+        "report_R-2025-034.md",
+        "report_R-2025-037.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Ошибка E-17 на AR-210. Какую деталь заказать?"
+          },
+          "result": {
+            "answer": "P-1042B",
+            "facts": [
+              "E-17 -INDICATES-> пусковое реле",
+              "AR-210 -FAILED-> пусковое реле",
+              "AR-210 -HAS_PART-> P-1042",
+              "P-1042 -IS_A-> пусковое реле",
+              "P-1042 -REPLACED_BY-> P-1042B"
+            ],
+            "sources": [
+              "bulletin_SB-2025-03.md",
+              "manual_AR-210.md",
+              "manual_AR-220.md",
+              "procedure_SP-104.md",
+              "report_R-2025-010.md",
+              "report_R-2025-028.md",
+              "report_R-2025-034.md",
+              "report_R-2025-037.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        },
+        {
+          "tool": "check_stock",
+          "args": {
+            "part_id": "P-1042B",
+            "warehouse": "Казань"
+          },
+          "result": {
+            "part_id": "P-1042B",
+            "warehouse": "Казань",
+            "qty": 3,
+            "discontinued": false
+          },
+          "error": null
+        },
+        {
+          "tool": "get_price",
+          "args": {
+            "part_id": "P-1042B"
+          },
+          "result": {
+            "part_id": "P-1042B",
+            "name": "пусковое реле",
+            "price_rub": 2630,
+            "discontinued": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 5,
+      "tokens": 4977
+    },
+    {
+      "id": "dev-18",
+      "type": "tool",
+      "question": "Ошибка E-22 на GS-520. Какую деталь заказать, есть ли она на складе в Новосибирске и сколько она стоит?",
+      "answer": "Деталь для ошибки E-22 на модели GS-520 — циркуляционный насос с кодом P-3162.\n\n- Остаток на складе в Новосибирске: 8 шт.  \n- Цена: 40 430 рублей.  \n\nДеталь доступна и в наличии на складе в Новосибирске.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "manual_GS-410.md",
+        "manual_GS-420.md",
+        "manual_GS-510.md",
+        "manual_GS-520.md",
+        "procedure_SP-112.md",
+        "report_R-2025-015.md",
+        "report_R-2025-025.md",
+        "report_R-2025-035.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Ошибка E-22 на GS-520. Какая деталь соответствует этой ошибке?"
+          },
+          "result": {
+            "answer": "Циркуляционный насос",
+            "facts": [
+              "E-22 -INDICATES-> циркуляционный насос",
+              "GS-520 -FAILED-> циркуляционный насос",
+              "GS-520 -HAS_PART-> P-3162",
+              "P-3162 -IS_A-> циркуляционный насос"
+            ],
+            "sources": [
+              "manual_GS-410.md",
+              "manual_GS-420.md",
+              "manual_GS-510.md",
+              "manual_GS-520.md",
+              "procedure_SP-112.md",
+              "report_R-2025-015.md",
+              "report_R-2025-025.md",
+              "report_R-2025-035.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        },
+        {
+          "tool": "check_stock",
+          "args": {
+            "part_id": "P-3162",
+            "warehouse": "Новосибирск"
+          },
+          "result": {
+            "part_id": "P-3162",
+            "warehouse": "Новосибирск",
+            "qty": 8,
+            "discontinued": false
+          },
+          "error": null
+        },
+        {
+          "tool": "get_price",
+          "args": {
+            "part_id": "P-3162"
+          },
+          "result": {
+            "part_id": "P-3162",
+            "name": "циркуляционный насос",
+            "price_rub": 40430,
+            "discontinued": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 5,
+      "tokens": 4935
+    },
+    {
+      "id": "dev-19",
+      "type": "tool",
+      "question": "Сколько стоит деталь узла «контроллер» для модели BZ-110?",
+      "answer": "Деталь узла «контроллер» для модели BZ-110 (код P-2022) стоит 17 210 рублей. Деталь не прекращена производство.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [
+        "manual_BZ-110.md",
+        "manual_BZ-120.md"
+      ],
+      "source_recall": 1.0,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "код детали для узла «контроллер» в модели BZ-110"
+          },
+          "result": {
+            "answer": "Код детали для узла «контроллер» в модели BZ-110 — P-2022.",
+            "facts": [
+              "BZ-110 -HAS_PART-> P-2022",
+              "P-2022 -IS_A-> контроллер"
+            ],
+            "sources": [
+              "manual_BZ-110.md",
+              "manual_BZ-120.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        },
+        {
+          "tool": "get_price",
+          "args": {
+            "part_id": "P-2022"
+          },
+          "result": {
+            "part_id": "P-2022",
+            "name": "контроллер",
+            "price_rub": 17210,
+            "discontinued": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 4,
+      "tokens": 3302
+    },
+    {
+      "id": "dev-20",
+      "type": "tool",
+      "question": "Сколько штук детали P-1118B есть на складе в Казани?",
+      "answer": "На складе в Казани есть 12 штук детали P-1118B. Деталь не прекращена производство.",
+      "correct": true,
+      "refused": false,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "check_stock",
+          "args": {
+            "part_id": "P-1118B",
+            "warehouse": "Казань"
+          },
+          "result": {
+            "part_id": "P-1118B",
+            "warehouse": "Казань",
+            "qty": 12,
+            "discontinued": false
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 2,
+      "tokens": 1923
+    },
+    {
+      "id": "dev-21",
+      "type": "tool",
+      "question": "Оформи заказ: 2 штуки детали для устранения ошибки E-20 на BZ-120, склад Москва.",
+      "answer": "В базе знаний не найдено.",
+      "correct": false,
+      "refused": true,
+      "fabricated": [],
+      "sources": [
+        "manual_BZ-110.md",
+        "manual_BZ-210.md",
+        "procedure_SP-110.md",
+        "report_R-2025-004.md",
+        "report_R-2025-033.md"
+      ],
+      "source_recall": 0.4,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "код детали для ошибки E-20 на модели BZ-120"
+          },
+          "result": {
+            "answer": "код детали для ошибки E-20 на модели BZ-120 — нагреватель оттайки",
+            "facts": [
+              "E-20 -INDICATES-> нагреватель оттайки",
+              "BZ-120 -FAILED-> нагреватель оттайки"
+            ],
+            "sources": [
+              "manual_BZ-110.md",
+              "manual_BZ-210.md",
+              "procedure_SP-110.md",
+              "report_R-2025-004.md",
+              "report_R-2025-033.md"
+            ],
+            "refused": false
+          },
+          "error": null
+        },
+        {
+          "tool": "check_stock",
+          "args": {
+            "part_id": "P-8888B",
+            "warehouse": "Москва"
+          },
+          "result": null,
+          "error": "Номер детали не подтверждён вопросом или результатом поиска. Сначала вызови search_knowledge."
+        },
+        {
+          "tool": "check_stock",
+          "args": {
+            "part_id": "P-8888B",
+            "warehouse": "Москва"
+          },
+          "result": null,
+          "error": "Номер детали не подтверждён вопросом или результатом поиска. Сначала вызови search_knowledge."
+        }
+      ],
+      "rejected_steps": 2,
+      "llm_calls": 6,
+      "tokens": 6604
+    },
+    {
+      "id": "dev-22",
+      "type": "refusal",
+      "question": "Что означает ошибка E-99 на AR-210?",
+      "answer": "Ошибка E-99 на модели AR-210 не найдена в базе знаний. Пожалуйста, уточните код ошибки или модель оборудования, чтобы я мог помочь более точно.",
+      "correct": true,
+      "refused": true,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "ошибка E-99 на AR-210"
+          },
+          "result": {
+            "answer": "В базе знаний не найдено.",
+            "facts": [],
+            "sources": [],
+            "refused": true
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 2,
+      "tokens": 1908
+    },
+    {
+      "id": "dev-23",
+      "type": "refusal",
+      "question": "Какую деталь заказать при ошибке E-17 на AR-999?",
+      "answer": "В базе знаний не найдено информации о детали для ошибки E-17 на модели AR-999. Пожалуйста, уточните модель или код ошибки, чтобы я мог помочь более точно.",
+      "correct": true,
+      "refused": true,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "search_knowledge",
+          "args": {
+            "question": "Какую деталь заказать при ошибке E-17 на AR-999?"
+          },
+          "result": {
+            "answer": "В базе знаний не найдено.",
+            "facts": [],
+            "sources": [],
+            "refused": true
+          },
+          "error": null
+        }
+      ],
+      "rejected_steps": 0,
+      "llm_calls": 2,
+      "tokens": 1933
+    },
+    {
+      "id": "dev-24",
+      "type": "refusal",
+      "question": "Сколько стоит деталь P-9999?",
+      "answer": "Деталь P-9999 не найдена в системе ERP. Проверьте правильность кода детали или уточните запрос.",
+      "correct": false,
+      "refused": false,
+      "fabricated": [],
+      "sources": [],
+      "source_recall": null,
+      "steps": [
+        {
+          "tool": "get_price",
+          "args": {
+            "part_id": "P-9999"
+          },
+          "result": {
+            "error": "Данных в ERP нет: деталь P-9999 не найдена"
+          },
+          "error": "Данных в ERP нет: деталь P-9999 не найдена"
+        }
+      ],
+      "rejected_steps": 1,
+      "llm_calls": 2,
+      "tokens": 1867
+    }
+  ]
+}
